@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'public',
     'product',
-    'suppler',
+    'supplier',
 
 ]
 
