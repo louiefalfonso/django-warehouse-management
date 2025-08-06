@@ -3,7 +3,6 @@ from django.core.exceptions import ValidationError
 
 from .models import Product
 
-
 class ProductForm(ModelForm):
     class Meta:
         model = Product
@@ -14,7 +13,6 @@ class ProductForm(ModelForm):
             'product_number': TextInput(attrs={"type": "text"}),
             'description': TextArea(attrs={"type": "text"}),
             'sku': TextInput(attrs={"type": "text"}),
-            #'category': TextInput(attrs={"type": "text"}),
             'price': TextInput(attrs={"type": "number","min":"1.00", "max":"999.99"})
             'quantity': TextInput(attrs={"type": "number","min":"1", "max":"999"})
         }
