@@ -1,9 +1,27 @@
 {% extends master.html%}
 
+{% block title %} Update Product Details {% endblock %}
+
+{% block styles %}
+
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h5>Edit Product</h5>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h3 class="card-title">Update Product Details</h3>
+           </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {{form}}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </form>
+            </div>     
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Product List</a>
+        </div>
     </div>
 </div>
 {% endblock %}
