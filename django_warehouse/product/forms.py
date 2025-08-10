@@ -1,7 +1,23 @@
 from django.forms import ModelForm, TextInput, IntegerField, Select, TextArea
 from django.core.exceptions import ValidationError
 
-from .models import Product
+from .models import Product, Category
+
+class CategoryForm(ModelForm):
+    model = Category
+    fields = '__all__'
+    widgets = {
+        'category_name': TextInput(attrs={"type": "text"}),
+        'description': TextArea(attrs={"type": "text"}),
+        'category_code': TextInput(attrs={"type": "text"}),
+        'category_status': Select(attrs={"type": "select"})
+    }
+    labels = {
+        'category_name': 'Category Name',
+        'description': 'Description',
+        'category_code': 'Category Code',
+        'category_status': 'Category Status'
+    }
 
 class ProductForm(ModelForm):
     class Meta:
@@ -13,8 +29,9 @@ class ProductForm(ModelForm):
             'product_number': TextInput(attrs={"type": "text"}),
             'description': TextArea(attrs={"type": "text"}),
             'sku': TextInput(attrs={"type": "text"}),
-            'price': TextInput(attrs={"type": "number","min":"1.00", "max":"999.99"})
-            'quantity': TextInput(attrs={"type": "number","min":"1", "max":"999"})
+            'price': TextInput(attrs={"type": "number","min":"1.00", "max":"999.99"}),
+            'quantity': TextInput(attrs={"type": "number","min":"1", "max":"999"}),
+            'category': Select(attrs={"type": "select"})
         }
         labels = {
             'product_name': 'Product Name',
@@ -24,5 +41,5 @@ class ProductForm(ModelForm):
             'sku': 'SKU',
             'price': 'Price',
             'quantity': 'Quantity'
+            'category': 'Category'
         }
-

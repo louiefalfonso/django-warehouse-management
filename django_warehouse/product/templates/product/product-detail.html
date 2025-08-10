@@ -3,7 +3,23 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
-        <h5>Product Details</h5>
+        <div class="card mt-3">
+            <div class="card-header">
+                <h3 class="card-title">Product :{{product.product_number}}</h3>
+            </div>
+            <div class="card-body">
+                <h5>Product Name: {{product.product_name}}</h5>
+                <p>Description: {{product.description}}</p>
+                <p>SKU: {{product.sku}}</p>
+                <p>Price: ${{product.price}}</p>
+                <p>Quantity: {{product.quantity}}</p>
+                <p>Category: {{product.category.name}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'edit_product' product.id %}" class="btn btn-primary">Edit Product</a>
+                <a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Product List</a>
+            </div>    
+        </div>
     </div>
 </div>
 {% endblock %}
