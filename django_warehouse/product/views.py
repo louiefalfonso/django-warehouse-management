@@ -4,7 +4,7 @@ from .models import Product
 
 # Display Product Lists
 def product_lists(request):
-    return render(request, "product/product-list.html",{"products": Product.objects.all()})
+    return render(request, "product/product-lists.html",{"products": Product.objects.all()})
 
 # Add New Product
 def add_product(request):
@@ -22,9 +22,8 @@ def product_details(request, id):
     product = get_object_or_404(Product, pk=id)
     return render(request, "product/product-detail.html", {"product": product})
 
-
 # Edit Product
-def edit_produt(request, id):
+def edit_product(request, id):
     product = get_object_or_404(Product, pk=id)
     if request.method == "POST":
         form = ProductForm(request.POST, instance=product)
